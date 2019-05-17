@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search Google</title>
+	<script type="text/javascript">
+		function results(){
+			var year = new Date().getFullYear();
+			var age = document.getElementById('age').value;
+			year = year - age;
+			var home = document.getElementById('home').value;
+			var link = "Link to your hometown";
+			
+			// var res1 = home.link("https://www.google.com/maps/search/"+home);  //for link to the Maps
+			var res2 = link.link("https://www.google.com/search?q="+home);
+			document.write(age, " dob:", year, "<br>", res2);
+		}
+	</script>
+</head>
+<body>
+	<form>
+		Enter name: <input type="text" name="name" id="name" /><br><br>
+		Enter age: <input type="text" name="age" id="age" /><br><br>
+		Enter hometown: <input type="text" name="home" id="home" /><br><br>
+		<button type="button" onclick="results();">Click</button>
+	</form>
+</body>
+</html>

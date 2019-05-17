@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registeration Page</title>
+	<script type="text/javascript">
+		function NameValid(){
+			var s = document.getElementById('name').value;
+			if(s.length!=0){
+				for(var i=0; i<s.length; i++)
+					if(!isNaN(s[i])){
+						alert('Invalid Name Input');
+						exit();
+					}
+				UserValid();
+			}else{
+				alert('Enter a Name');
+				exit();
+			}
+		}
+
+		function UserValid(){
+		  	var s = document.getElementById('uname').value;
+			if(s.length!=0) UserPassValid();
+			else{
+				alert('Enter UserName');
+				exit();
+			}
+		}
+
+		function UserPassValid(){
+			var s = document.getElementById('pass1').value;
+			var t = document.getElementById('pass2').value;
+			if((s.length==0)||(t.length==0)){
+				if(s.length==0){ 
+					alert('Enter Password');
+					exit();
+				}
+				if(t.length==0){
+					alert('Fill Confirm Password Field');
+					exit();
+				} 
+			}else {
+				if(s != t){
+					alert('Passwords do not match');
+					exit();
+				}else dobValid();
+			}	
+		}
+
+		function dobValid(){
+			var s = document.getElementById('dob').value;
+			var t = s.split("-")
+			for(var i=0; i<t.length;i++){ var k = t[i]; }
+
+			if(k.length!=4){
+				alert('Invalid Year in Date of Birth!'); 
+			}else if(k.length==4){
+				if(k<'1990'){
+					alert('Invalid Year of Birth! <1900'); 
+				}
+				else if(k>'2000'){
+					alert('Invalid Year of Birth! >2000'); 
+				}
+				else EmailValid();
+			}
+		}
+
+		function EmailValid(){
+			var s = document.getElementById('em').value;
+			if(s.length==0){
+			 	alert('Enter E-mail Address');
+			 	exit();
+			}
+			else checkboxValid();
+		}
+
+		function checkboxValid(){
+			var s = document.getElementById('tnc').value;
+			if(s.checked==false){
+				alert('Need to agree to Terms and Conditions!');
+				exit();
+			}else document.write("Successfully Registered!")
+		}
+	</script>
+</head>
+<body>
+	<form autocomplete="off">
+		Name: <input type="text" name="name" id="name" /><br><br>
+		Username: <input type="text" name="uname" id="uname" /><br><br>
+		Password: <input type="password" name="pass" id="pass1" d/><br><br>
+		Confirm Password: <input type="password" name="cpass" id="pass2" /><br><br>
+		Year of Birth: <input type="text" name="dob" id="dob" />DD-MM-YYYY<br><br>
+		E-mail: <input type="email" name="email" id="em" /><br><br>
+		I Agree to the Terms and Conditions: <input type="checkbox" name="tnc" id="tnc" /><br><br>
+		<button type="button" onclick="NameValid();">Click</button>
+	</form>
+</body>
+</html>
